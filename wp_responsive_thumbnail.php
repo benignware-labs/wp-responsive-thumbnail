@@ -13,12 +13,11 @@
 
 function wp_responsive_thumbnail_html($html, $post_id, $post_thumbnail_id, $size, $attr) {
   global $__responsive_image_sizes;
-  $responsive_image_sizes = $__responsive_image_sizes[$size];
-  
-  // Check to see if a 'retina' class exists in the array when calling "the_post_thumbnail()", if so output different <img/> html
-  if ($responsive_image_sizes) {
-    
-    $id = get_post_thumbnail_id(); // gets the id of the current post_thumbnail (in the loop)
+  if (isset($__responsive_image_sizes) && isset($__responsive_image_sizes[$size])) {
+    $responsive_image_sizes = $__responsive_image_sizes[$size];
+    // Check to see if a 'retina' class exists in the array when calling "the_post_thumbnail()", if so output different <img/> html
+      
+    $id = $post_thumbnail_id; // gets the id of the current post_thumbnail (in the loop)
     $src = wp_get_attachment_image_src($id, $size); // gets the image url specific to the passed in size (aka. custom image size)
     
     if ($src) {
@@ -51,5 +50,8 @@ add_filter('post_thumbnail_html', 'wp_responsive_thumbnail_html', 99, 5);
 
 function add_responsive_thumbnail($image_size, $responsive_image_sizes) {
   global $__responsive_image_sizes;
+  if (!isset($__responsive_image_sizes)) {
+    $__responsive_image_sizes = array();
+  }
   $__responsive_image_sizes[$image_size] = $responsive_image_sizes;
 }
