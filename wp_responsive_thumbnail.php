@@ -15,7 +15,6 @@ function wp_responsive_thumbnail_html($html, $post_id, $post_thumbnail_id, $size
   global $__responsive_image_sizes;
   if (isset($__responsive_image_sizes) && isset($__responsive_image_sizes[$size])) {
     $responsive_image_sizes = $__responsive_image_sizes[$size];
-    // Check to see if a 'retina' class exists in the array when calling "the_post_thumbnail()", if so output different <img/> html
       
     $id = $post_thumbnail_id; // gets the id of the current post_thumbnail (in the loop)
     $src = wp_get_attachment_image_src($id, $size); // gets the image url specific to the passed in size (aka. custom image size)
@@ -25,6 +24,8 @@ function wp_responsive_thumbnail_html($html, $post_id, $post_thumbnail_id, $size
     
       $pattern = "~<img[^>]*src=['\"]" . preg_quote($src[0], "~") . "['\"][^>]*\/?>~";
       $matched = preg_match($pattern, $html, $match, PREG_OFFSET_CAPTURE);
+      
+      echo $attr['class'];
       
       $before_image = "<picture>";
       foreach ($responsive_image_sizes as $width => $image_size) {
@@ -36,7 +37,7 @@ function wp_responsive_thumbnail_html($html, $post_id, $post_thumbnail_id, $size
       if ($matched) {
         $html = substr_replace($html, $before_image . $match[0][0] . $after_image, $match[0][1], strlen($match[0][0]));
       } else {
-        // Fallback to default img tag: 
+        // Fallback to default img tag:
         $class = isset($attr['class']) ? $attr['class'] : ''; // gets classes passed to the post thumbnail, defined here for easier function access
         $html.= $before_image . '<img src="' . $src[0] . '" class="' . $class . '" />' . $after_image;
       }

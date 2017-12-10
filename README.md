@@ -30,7 +30,7 @@ if (function_exists('add_responsive_thumbnail')) {
 Call `the_post_thumbnail` as usual:
 
 ```
-the_post_thumbnail('large_wide');
+the_post_thumbnail('stage');
 ```
 
 The generated output looks like this:
@@ -41,4 +41,27 @@ The generated output looks like this:
   <source media="(max-width: 768px)" srcset="http://127.0.0.1:9090/wp-content/uploads/2016/04/image-768x360.jpg 768w"/>
   <img class="attachment-stage size-stage wp-post-image" alt="image" src="http://127.0.0.1:9090/wp-content/uploads/2016/04/image-1440x560.jpg">
 </picture>
+```
+
+## Development
+
+Install `composer.phar`
+
+```cli
+curl -sS https://getcomposer.org/installer | php
+```
+
+Install dev dependencies
+
+```cli
+php composer.phar install
+```
+
+Since PHPUnit requires PHP7, you might need to [install](https://developerjack.com/blog/2016/installing-php71-with-homebrew/) that first.
+
+Run the tests
+
+```cli
+
+
 ```
