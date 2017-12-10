@@ -3,7 +3,7 @@
 /**
  Plugin Name: WP Responsive Thumbnail
  Plugin URI: http://github.com/benignware-labs/wp-responsive-thumbnail
- Description: Target image sizes by breakpoints
+ Description: Responsive thumbnails per breakpoints
  Version: 0.0.1
  Author: Rafael Nowrotek, Benignware
  Author URI: http://benignware.com
