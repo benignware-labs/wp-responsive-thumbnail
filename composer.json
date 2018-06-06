@@ -1,6 +1,6 @@
 {
   "name": "wp-responsive-thumbnail",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "wordpress-plugin",
   "license": "MIT",
   "description": "Responsive thumbnails per breakpoints",
