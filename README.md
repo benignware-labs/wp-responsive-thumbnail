@@ -1,9 +1,8 @@
-wp-responsive-thumbnail
-=======================
+# wp-responsive-thumbnail
 
-> Responsive thumbnails per breakpoints
+Responsive image sizes for Wordpress
 
-This plugin lets theme developers configure media breakpoints for different images sizes.
+This plugin enables theme developers configure media breakpoints for different images sizes.
 It works by wrapping the image inside a html5 `picture`-tag and providing the appropriate source elements.
 
 ## Usage
@@ -41,4 +40,76 @@ The generated output looks like this:
   <source media="(max-width: 768px)" srcset="http://127.0.0.1:9090/wp-content/uploads/2016/04/image-768x360.jpg 768w"/>
   <img class="attachment-stage size-stage wp-post-image" alt="image" src="http://127.0.0.1:9090/wp-content/uploads/2016/04/image-1440x560.jpg">
 </picture>
+```
+
+
+## Development
+
+Download [Docker CE](https://www.docker.com/get-docker) for your OS.
+Download [NodeJS](https://nodejs.org) for your OS.
+
+### Install
+
+#### Install wordpress
+
+```cli
+docker-compose run --rm wp wp-install.sh
+```
+
+After installation you can log in with user `wordpress` and password `wordpress`.
+
+#### Install front-end dependencies
+
+```cli
+npm i
+```
+
+### Development Server
+
+Point terminal to your project root and start up the container.
+
+```cli
+docker-compose up -d
+```
+
+Point your browser to [http://localhost:8030](http://localhost:8030).
+
+
+#### Watch front-end dependencies
+
+```cli
+npm run watch
+```
+
+### Docker
+
+##### Update composer dependencies
+
+```cli
+docker-compose run composer update
+```
+
+##### Globally stop all running docker containers
+
+```cli
+docker stop $(docker ps -a -q)
+```
+
+##### Update Wordpress
+
+Due to some permission issues, you need to chmod your container's web-root prior to running the updater:
+
+```cli
+docker-compose exec wordpress bash
+```
+
+From the container shell, change permissons all down the tree.
+```cli
+chmod -R 777 .
+```
+
+After `CTRL+D`, you're ready to update Wordpress, either from the admin-interface or using wp-cli:
+
+```
+docker-compose run wp core update
 ```
