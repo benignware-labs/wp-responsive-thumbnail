@@ -3,10 +3,10 @@
 
 
 /**
- Plugin Name: WP Responsive Thumbnail
+ Plugin Name: Responsive Thumbnail
  Plugin URI: https://github.com/benignware-labs/wp-reponsive-thumbnail
  Description: Responsive thumbnails per breakpoints
- Version: 0.0.5
+ Version: 0.0.6
  Author: Rafael Nowrotek, Benignware
  Author URI: http://benignware.com
  License: MIT
@@ -23,6 +23,10 @@ add_filter('post_thumbnail_html', function($html, $post_id = null, $post_thumbna
 
 add_filter('post_thumbnail_html', function($html, $post_id = null, $post_thumbnail_id = null, $size = null, $attr = null) {
   global $__responsive_image_sizes;
+
+  if (preg_match('~^\s*<picture~', $html) || preg_match('~^\s*<img~', $html)) {
+    return $html;
+  }
 
   $sizes = get_responsive_image_sizes();
   $size_data = $sizes[$size];

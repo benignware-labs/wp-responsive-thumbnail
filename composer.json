@@ -1,7 +1,7 @@
 {
-  "name": "benignware/wp-responsive-thumbnail",
-  "version": "0.0.5",
-  "type": "wordpress-muplugin",
+  "name": "benignware/responsive-thumbnail",
+  "version": "0.0.6",
+  "type": "wordpress-plugin",
   "license": "MIT",
   "description": "Responsive image sizes for Wordpress",
   "homepage": "http://github.com/benignware-labs/wp-responsive-thumbnail",
