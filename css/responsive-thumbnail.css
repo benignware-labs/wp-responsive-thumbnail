@@ -58,3 +58,8 @@
 .responsive-thumbnail picture {
   /* outline: 1px solid blue; */
 }
+
+/* Fix initally visible volume slider */
+.no-js .responsive-thumbnail .featured-video-plus .wp-video a:not(.post-thumbnail) {
+  display: none;
+}
