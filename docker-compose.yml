@@ -25,7 +25,7 @@ services:
     restart: always
     volumes:
       - wordpress:/var/www/html
-      - .:/var/www/html/wp-content/mu-plugins/responsive-thumbnail
+      - .:/var/www/html/wp-content/plugins/responsive-thumbnail
       - ./wp-install.sh:/usr/local/bin/wp-install.sh
       - .uploads:/var/www/html/wp-content/uploads
       - .plugins:/var/www/html/wp-content/plugins
@@ -38,7 +38,7 @@ services:
       - wordpress
     volumes:
       - wordpress:/var/www/html
-      - .:/var/www/html/wp-content/mu-plugins/responsive-thumbnail
+      - .:/var/www/html/wp-content/plugins/responsive-thumbnail
       - ./wp-install.sh:/usr/local/bin/wp-install.sh
       - .uploads:/var/www/html/wp-content/uploads
       - .plugins:/var/www/html/wp-content/plugins

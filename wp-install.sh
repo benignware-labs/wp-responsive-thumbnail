@@ -20,6 +20,7 @@ wp option update permalink_structure "/%year%/%monthnum%/%postname%/" --skip-the
 wp plugin activate wordpress-importer
 wp plugin activate regenerate-thumbnails
 wp plugin activate post-thumbnail-editor
+wp plugin activate featured-video-plus
 
 
 # Activate theme.

@@ -10,7 +10,7 @@ add_action( 'wp_enqueue_scripts', function() {
 
 // add_image_size( 'twentyseventeen-featured-image', 2000, 1200, true );
 add_image_size( 'twentyseventeen-featured-image-tablet', 1024, 620, true );
-add_image_size( 'twentyseventeen-featured-image-mobile', 660, 480, true );
+add_image_size( 'twentyseventeen-featured-image-mobile', 480, 660, true );
 
 
 if (function_exists('add_responsive_thumbnail')) {

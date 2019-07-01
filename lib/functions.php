@@ -35,7 +35,6 @@ function get_responsive_thumbnail($attachment_id, $size, $icon = false, $attr = 
       return sprintf('<source media="(max-width: %spx)" srcset="%s %sw"/>', $max_width, $url, $width);
     }, array_keys($responsive_image_sizes)));
 
-
     $output.= '<img ' . implode(' ', array_map(function ($key) use($attr) {
       return ' ' . $key . '="' . htmlspecialchars($attr[$key]) . '"';
     }, array_keys($attr))) . '/>';
@@ -43,48 +42,6 @@ function get_responsive_thumbnail($attachment_id, $size, $icon = false, $attr = 
     $output.= '</picture>';
 
     return $output;
-
-    /*
-    if ($url) {
-
-
-      $pattern = "~<img[^>]*src=['\"]" . preg_quote($src[0], "~") . "['\"][^>]*\/?>~";
-      $matched = preg_match($pattern, $html, $match, PREG_OFFSET_CAPTURE);
-
-      $before_image = "<picture>";
-      foreach ($responsive_image_sizes as $width => $image_size) {
-        $img_src = wp_get_attachment_image_src($id, $image_size);
-        $before_image.= "<source media=\"(max-width: " . $width . "px)\" srcset=\"" . $img_src[0] . " " . $img_src[1] . "w" . "\"/>";
-      }
-      $after_image = "</picture>";
-
-      if ($matched) {
-        $html = substr_replace($html, $before_image . $match[0][0] . $after_image, $match[0][1], strlen($match[0][0]));
-      } else {
-
-        $html_attrs = array_merge(array(
-          'alt' => get_the_title($id),
-          'src' => $src
-        ), $attr);
-
-        $str = '<img' . implode(' ', array_map(function ($k, $v) {
-          return ' ' . $k .'="'. htmlspecialchars($v) .'"';
-        }, array_keys($html_attrs), $html_attrs)) . '/>';
-
-
-        // Fallback to default img tag:
-        echo 'ID: ' . $id . ' SIZE: ' . $size . ' -> SRC: ' . $src . ' -> <pre>' . $str . '</pre>';
-
-        exit;
-        $class = isset($attr['class']) ? $attr['class'] : ''; // gets classes passed to the post thumbnail, defined here for easier function access
-        $html.= $before_image . '<img src="' . $src[0] . '" class="' . $class . '" />' . $after_image;
-
-
-        echo $greeting;
-        exit;
-      }
-    }
-    */
   }
   return null;
 }
@@ -99,4 +56,28 @@ function add_responsive_thumbnail($image_size, $responsive_image_sizes) {
   }
 
   $__responsive_image_sizes[$image_size] = $responsive_image_sizes;
+}
+
+
+function get_responsive_image_sizes() {
+  global $__responsive_image_sizes;
+  global $_wp_additional_image_sizes;
+
+  $sizes = array_reduce(get_intermediate_image_sizes(), function($result, $size) {
+    global $_wp_additional_image_sizes;
+
+    if ( in_array( $_size, array('thumbnail', 'medium', 'medium_large', 'large') ) ) {
+      $result[$size] = array(
+        'width' => get_option( "{$size}_size_w" ),
+        'height' => get_option( "{$size}_size_h" ),
+        'crop' => get_option( "{$size}_size_crop" )
+      );
+    } elseif ( isset( $_wp_additional_image_sizes[ $size ] ) ) {
+      $result[$size] = $_wp_additional_image_sizes[ $size ];
+    }
+
+    return $result;
+  }, array());
+
+  return $sizes;
 }

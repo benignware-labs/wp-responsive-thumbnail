@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4cbc67000198ca8fe6eef432c8d93d93",
+    "content-hash": "61b4e9a4aeedec2477ddd3efa7c76739",
     "packages": [
         {
             "name": "composer/installers",
@@ -169,6 +169,24 @@
                 "wordpress"
             ],
             "time": "2015-01-21T14:32:26+00:00"
+        },
+        {
+            "name": "wpackagist-plugin/featured-video-plus",
+            "version": "2.3.3",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/featured-video-plus/",
+                "reference": "tags/2.3.3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/featured-video-plus.2.3.3.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/featured-video-plus/"
         },
         {
             "name": "wpackagist-plugin/post-thumbnail-editor",

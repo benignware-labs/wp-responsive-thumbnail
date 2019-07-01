@@ -1,6 +1,6 @@
 {
   "name": "benignware/wp-responsive-thumbnail",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "type": "wordpress-muplugin",
   "license": "MIT",
   "description": "Responsive image sizes for Wordpress",
@@ -44,6 +44,7 @@
     "wpackagist-plugin/wordpress-importer": ">=0.6.4",
     "wpackagist-plugin/regenerate-thumbnails": ">=2.2.6",
     "wpackagist-plugin/post-thumbnail-editor": ">=2.4.8",
+    "wpackagist-plugin/featured-video-plus": ">=2.3.3",
     "wptrt/theme-unit-test": "dev-master"
   },
   "scripts": {
