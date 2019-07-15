@@ -1,12 +1,10 @@
 <?php
 
-
-
 /**
  Plugin Name: Responsive Thumbnail
  Plugin URI: https://github.com/benignware-labs/wp-reponsive-thumbnail
  Description: Responsive thumbnails per breakpoints
- Version: 0.0.6
+ Version: 0.0.7
  Author: Rafael Nowrotek, Benignware
  Author URI: http://benignware.com
  License: MIT
@@ -64,7 +62,7 @@ add_filter('post_thumbnail_html', function($html, $post_id = null, $post_thumbna
 @media screen and {$mq} {
   /* $max_width ---- $index */
 
-  img:not(*[data-max-width="{$max_width}"]) {
+  img[data-max-width]:not(*[data-max-width="{$max_width}"]) {
     display: none;
   }
 
@@ -82,7 +80,7 @@ if ($index === count($ris) -1) {
   $html.= <<<EOT
 
 @media screen and {$minq} {
-  img:not(*[data-max-width="none"]) {
+  img[data-max-width]:not(*[data-max-width="none"]) {
     display: none;
   }
 }
