@@ -21,7 +21,7 @@ function get_responsive_thumbnail($attachment_id, $size, $icon = false, $attr = 
         'alt' => get_the_title($id),
         'src' => $url
       ),
-      $attr
+      $attr ?: array()
     );
 
     ksort($responsive_image_sizes);
@@ -37,6 +37,8 @@ function get_responsive_thumbnail($attachment_id, $size, $icon = false, $attr = 
       list($url, $width) = wp_get_attachment_image_src($id, $responsive_image_sizes[$max_width]);
       return sprintf('<source media="(max-width: %spx)" srcset="%s %sw"/>', $max_width, $url, $width);
     }, array_keys($responsive_image_sizes)));
+
+    $attr = is_array($attr) ? $attr : array();
 
     $output.= '<img ' . implode(' ', array_map(function ($key) use($attr) {
       return ' ' . $key . '="' . htmlspecialchars($attr[$key]) . '"';

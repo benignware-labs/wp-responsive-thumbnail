@@ -4,7 +4,7 @@
  Plugin Name: Responsive Thumbnail
  Plugin URI: https://github.com/benignware-labs/wp-reponsive-thumbnail
  Description: Responsive thumbnails per breakpoints
- Version: 0.0.8
+ Version: 0.0.9
  Author: Rafael Nowrotek, Benignware
  Author URI: http://benignware.com
  License: MIT
