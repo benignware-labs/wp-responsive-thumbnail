@@ -162,7 +162,7 @@ add_action('init', function() {
   $sizes = array_reduce(get_intermediate_image_sizes(), function($result, $size) {
     global $_wp_additional_image_sizes;
 
-    if ( in_array( $_size, array('thumbnail', 'medium', 'medium_large', 'large') ) ) {
+    if ( in_array( $size, array('thumbnail', 'medium', 'medium_large', 'large') ) ) {
       $result[$size] = array(
         'width' => get_option( "{$size}_size_w" ),
         'height' => get_option( "{$size}_size_h" ),
