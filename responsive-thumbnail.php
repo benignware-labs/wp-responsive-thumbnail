@@ -12,12 +12,11 @@
 
 require_once 'lib/functions.php';
 
-add_filter('post_thumbnail_html', function($html, $post_id = null, $post_thumbnail_id = null, $size = null, $attr = null) {
-
+add_filter('post_thumbnail_html', function($html, $post_id = null, $post_thumbnail_id = null, $size = null, $attr = array()) {
   $html = get_responsive_thumbnail($post_thumbnail_id, $size, false, $attr) ?: $html;
 
   return $html;
-}, 10, 5);
+}, 5, 5);
 
 add_filter('post_thumbnail_html', function($html, $post_id = null, $post_thumbnail_id = null, $size = null, $attr = null) {
   global $__responsive_image_sizes;
@@ -199,4 +198,4 @@ add_action('init', function() {
 
   wp_enqueue_script( 'responsive-thumbnail-js' );
   wp_enqueue_style( 'responsive-thumbnail-css' );
-}, 10);
+}, 90, 5);

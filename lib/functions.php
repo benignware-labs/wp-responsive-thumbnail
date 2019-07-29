@@ -16,9 +16,12 @@ function get_responsive_thumbnail($attachment_id, $size, $icon = false, $attr = 
 
     list($url, $width) = wp_get_attachment_image_src($id, $size);
 
-    $attr = array(
-      'alt' => get_the_title($id),
-      'src' => $url
+    $attr = array_merge(
+      array(
+        'alt' => get_the_title($id),
+        'src' => $url
+      ),
+      $attr
     );
 
     ksort($responsive_image_sizes);
