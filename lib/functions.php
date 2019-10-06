@@ -6,7 +6,6 @@ function get_responsive_thumbnail($attachment_id, $size, $icon = false, $attr = 
 
   if (isset($__responsive_image_sizes) && isset($__responsive_image_sizes[$size])) {
     $responsive_image_sizes = $__responsive_image_sizes[$size];
-    // Check to see if a 'retina' class exists in the array when calling "the_post_thumbnail()", if so output different <img/> html
 
     if (!$responsive_image_sizes) {
       return $responsive_image_sizes;
