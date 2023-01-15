@@ -3,7 +3,7 @@
  Plugin Name: Responsive Thumbnail
  Plugin URI: https://github.com/benignware-labs/wp-reponsive-thumbnail
  Description: Responsive thumbnails per breakpoints
- Version: 1.0.0
+ Version: 1.0.1
  Author: Rafael Nowrotek, Benignware
  Author URI: http://benignware.com
  License: MIT
@@ -119,9 +119,10 @@ add_filter('wp_get_attachment_image', function($html, $attachment_id, $size, $ic
 
   $thumbnail_img = $thumbnail_doc->getElementsByTagName('img')->item(0);
 
+  // Override attributes
   if ($thumbnail_img) {
     foreach ($img->attributes as $key => $attr) {
-      if (in_array($key, ['srcset', 'sizes', 'width', 'height'])) {
+      if (in_array($key, ['alt', 'src', 'srcset', 'sizes', 'width', 'height'])) {
         continue;
       }
   
