@@ -27,7 +27,7 @@ function get_responsive_thumbnail($attachment_id, $size, $icon = false, $attr = 
 
     $alt = get_the_title($id); // gets the post thumbnail title
 
-    $output = '<picture>';
+    $output = '<picture style="display: contents">';
 
     // Inject reference to `$result` into closure scope.
     // $result will get initialized on it's first usage.
