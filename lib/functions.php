@@ -60,7 +60,7 @@ namespace benignware\responsive_thumbnail {
   
       $alt = get_the_title($id);
   
-      $output = '<picture>';
+      $output = '<picture style="display: contents">';
   
       $output.= implode('', array_map(function($max_width) use ($responsive_image_size, $id) {
         list($url, $width) = wp_get_attachment_image_src($id, $responsive_image_size[$max_width]);
