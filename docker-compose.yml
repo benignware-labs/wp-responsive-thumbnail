@@ -28,8 +28,7 @@ services:
       - .:/var/www/html/wp-content/plugins/responsive-thumbnail
       - ./wp-install.sh:/usr/local/bin/wp-install.sh
       - .uploads:/var/www/html/wp-content/uploads
-      - .plugins:/var/www/html/wp-content/plugins
-      - ./test/fixtures/themes/responsive-thumbnail:/var/www/html/wp-content/themes/responsive-thumbnail
+      - ./test/themes/responsive-thumbnail:/var/www/html/wp-content/themes/responsive-thumbnail
     working_dir: /var/www/html
   wp:
     image: wordpress:cli
@@ -41,8 +40,7 @@ services:
       - .:/var/www/html/wp-content/plugins/responsive-thumbnail
       - ./wp-install.sh:/usr/local/bin/wp-install.sh
       - .uploads:/var/www/html/wp-content/uploads
-      - .plugins:/var/www/html/wp-content/plugins
-      - ./test/fixtures/themes/responsive-thumbnail:/var/www/html/wp-content/themes/responsive-thumbnail
+      - ./test/themes/responsive-thumbnail:/var/www/html/wp-content/themes/responsive-thumbnail
     links:
       - db
     command: "--info"
@@ -66,8 +64,7 @@ services:
       - ./composer.lock:/var/www/html/composer.lock
       - ./wp-install.sh:/usr/local/bin/wp-install.sh
       - .uploads:/var/www/html/wp-content/uploads
-      - .plugins:/var/www/html/wp-content/plugins
-      - ./test/fixtures/themes/responsive-thumbnail:/var/www/html/wp-content/themes/responsive-thumbnail
+      - ./test/themes/responsive-thumbnail:/var/www/html/wp-content/themes/responsive-thumbnail
       - wordpress:/var/www/html
     links:
       - wordpress:wordpress

@@ -45,6 +45,7 @@
     "wpackagist-plugin/regenerate-thumbnails": ">=2.2.6",
     "wpackagist-plugin/post-thumbnail-editor": ">=2.4.8",
     "wpackagist-plugin/featured-video-plus": ">=2.3.3",
+    "wpackagist-theme/twentyseventeen": ">=3.5",
     "wptrt/theme-unit-test": "dev-master"
   },
   "scripts": {
